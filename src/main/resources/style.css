@@ -1,3 +1,4 @@
+/* style page SignIn */
 .root{
     -fx-background-color:lavender;
 }
@@ -8,4 +9,19 @@
     -fx-background-color:tomato;
     -fx-text-fill:#ffffff;
     -fx-font-size:large;
+}
+
+/* style page Admin_1 */
+.table-view .column-header,
+.table-view .cell {
+    -fx-pref-width: 100px;
+}
+
+/*  زرار Buy */
+.button-users {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 6px;
 }
