@@ -1,11 +1,48 @@
-.root{
-    -fx-background-color:lavender;
+.root {
+    -fx-background-color: #FCEDD7;
 }
-.label{
-    -fx-font:normal bold 20px "serif";
+
+.label {
+    -fx-font: normal bold 30px "serif";
+    -fx-text-fill: #3E2723;
 }
-.button{
-    -fx-background-color:tomato;
-    -fx-text-fill:#ffffff;
-    -fx-font-size:large;
+
+#DownloadButton {
+    -fx-background-color: #6B481A;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 8px 20px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+}
+
+#backButton {
+    -fx-background-color: #FCEDD7;
+    -fx-text-fill: #4E342E;
+    -fx-font-size: 16px;
+    -fx-padding: 8px 20px;
+    -fx-border-color: #A38E75;
+    -fx-border-width: 1.5px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    }
+
+ #okButton {
+    -fx-background-color: #FCEDD7;
+    -fx-text-fill: #4E342E;
+    -fx-font-size: 16px;
+    -fx-padding: 8px 20px;
+    -fx-border-color: #A38E75;
+    -fx-border-width: 1.5px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+}
+
+.text-area, .text-field {
+    -fx-background-color: white;
+    -fx-text-fill: #4E342E;
+    -fx-border-color: #A38E75;
+    -fx-border-width: 1px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
 }

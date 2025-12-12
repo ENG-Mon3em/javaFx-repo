@@ -12,15 +12,19 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
 
-        Shop shop = new Shop();
+        Store store = new Store();
         SignIn SignIn = new SignIn();
         SignUp SignUp = new SignUp();
 
-//        stage.setScene(shop.getScene()); سعد(فك الكومنت عشان تشوف الصفحة)
-//        stage.setScene(SignUp.getScene()); شهاب(فك الكومنت عشان تشوف الصفحة)
-//        stage.setScene(SignIn.getScene()); سيد(فك الكومنت عشان تشوف الصفحة)
+//        stage.setScene(store.getScene());
+//        stage.setTitle("Store");
+//        stage.setScene(SignUp.getScene());
+//        stage.setTitle("SignUp");
+//        stage.setScene(SignIn.getScene());
+//        stage.setTitle("SignIn");
 
 
+        stage.setResizable(false);
         stage.show();
     }
 }

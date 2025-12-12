@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 
 import java.util.Objects;
 
-public class Shop {
+public class Store {
 
     public Scene getScene() {
 
@@ -22,7 +22,7 @@ public class Shop {
         VBox vBoxdetails, vBoxButtons, vBox, firstPart;
         HBox hBoxSearch, secondPart;
         FlowPane flowPane;
-        Scene shopScene;
+        Scene storeScene;
 
         //first part of page
         //Table
@@ -42,19 +42,25 @@ public class Shop {
 
         //second part of page
         //details & download
-        titleLabel = new Label("Shop");
-        okButton = new Button("ok");
+        titleLabel = new Label("Store");
         DetailsTextArea = new TextArea();
         DetailsTextArea.setPromptText("Book Details");
         searchTextField = new TextField();
         searchTextField.setPromptText("Enter Book Id");
         downloadButton = new Button("Download");
+        downloadButton.setId("DownloadButton");
         backButton = new Button("HomePage");
+        backButton.setId("backButton");
+        okButton = new Button("ok");
+        okButton.setId("okButton");
+
 
         firstPart = new VBox(titleLabel, table);
         firstPart.setAlignment(Pos.CENTER);
 
         hBoxSearch = new HBox(searchTextField, okButton);
+        hBoxSearch.setSpacing(5);
+        hBoxSearch.setAlignment(Pos.CENTER);
 
         vBoxdetails = new VBox(hBoxSearch, DetailsTextArea);
         vBoxdetails.setAlignment(Pos.CENTER);
@@ -73,8 +79,8 @@ public class Shop {
 
         flowPane = new FlowPane(vBox);
         flowPane.setAlignment(Pos.CENTER);
-        shopScene = new Scene(flowPane, 560, 670);
-        shopScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
-        return shopScene;
+        storeScene = new Scene(flowPane, 650, 720);
+        storeScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+        return storeScene;
     }
 }
