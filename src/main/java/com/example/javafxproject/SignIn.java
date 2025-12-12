@@ -64,7 +64,7 @@ public class SignIn {
         buttonVBox.setAlignment(Pos.CENTER);
 
 
-        signInScene = new Scene(rootGridPane, 400, 600);
+        signInScene = new Scene(rootGridPane, 650, 720);
         signInScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         return signInScene;
     }

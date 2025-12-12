@@ -64,7 +64,7 @@ public class SignUp {
         rootGridPane.setAlignment(Pos.CENTER);
 
 
-        signUpScene = new Scene(rootGridPane, 500, 600);
+        signUpScene = new Scene(rootGridPane, 650, 720);
         signUpScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         return signUpScene;
     }
