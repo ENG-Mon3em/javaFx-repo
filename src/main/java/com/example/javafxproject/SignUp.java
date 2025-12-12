@@ -37,6 +37,7 @@ public class SignUp {
         confirmPasswordLabel = new Label("Confirm Password:");
         confirmPasswordField = new PasswordField();
         signUpButton = new Button("Sign Up");
+        signUpButton.setId("DownloadButton");
         userTypeToggleGroup = new ToggleGroup();
         userRadioButton = new RadioButton("user");
         adminRadioButton = new RadioButton("admin");

@@ -49,11 +49,9 @@ public class Store {
         searchTextField.setPromptText("Enter Book Id");
         downloadButton = new Button("Download");
         downloadButton.setId("DownloadButton");
-        backButton = new Button("HomePage");
+        backButton = new Button("Back");
         backButton.setId("backButton");
         okButton = new Button("ok");
-        okButton.setId("okButton");
-
 
         firstPart = new VBox(titleLabel, table);
         firstPart.setAlignment(Pos.CENTER);
