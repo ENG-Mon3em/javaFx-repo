@@ -17,12 +17,16 @@ public class Main extends Application {
         SignIn SignIn = new SignIn();
         SignUp SignUp = new SignUp();
 
+        //صفحة حسن
 //        stage.setScene(viewBooks.getScene());
 //        stage.setTitle("viewBooks");
-        stage.setScene(store.getScene());
-        stage.setTitle("Store");
+        //صفحة منعم
+//        stage.setScene(store.getScene());
+//        stage.setTitle("Store");
+        //صفحة شهاب
 //        stage.setScene(SignUp.getScene());
 //        stage.setTitle("SignUp");
+        //صفحة سيد
 //        stage.setScene(SignIn.getScene());
 //        stage.setTitle("SignIn");
 
