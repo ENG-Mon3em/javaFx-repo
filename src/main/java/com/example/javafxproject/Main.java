@@ -19,8 +19,8 @@ public class Main extends Application {
 
 //        stage.setScene(viewBooks.getScene());
 //        stage.setTitle("viewBooks");
-//        stage.setScene(store.getScene());
-//        stage.setTitle("Store");
+        stage.setScene(store.getScene());
+        stage.setTitle("Store");
 //        stage.setScene(SignUp.getScene());
 //        stage.setTitle("SignUp");
 //        stage.setScene(SignIn.getScene());

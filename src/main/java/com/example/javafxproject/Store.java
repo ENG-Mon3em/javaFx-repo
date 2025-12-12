@@ -74,22 +74,22 @@ public class Store {
         firstPart = new VBox(titleLabel, table);
         firstPart.setAlignment(Pos.CENTER);
 
-        hBoxSearch = new HBox(searchTextField, okButton);
-        hBoxSearch.setSpacing(5);
-        hBoxSearch.setAlignment(Pos.CENTER);
+//        hBoxSearch = new HBox(searchTextField, okButton);
+//        hBoxSearch.setSpacing(5);
+//        hBoxSearch.setAlignment(Pos.CENTER);
 
-        vBoxdetails = new VBox(hBoxSearch, DetailsTextArea);
-        vBoxdetails.setAlignment(Pos.CENTER);
-        vBoxdetails.setSpacing(5);
+//        vBoxdetails = new VBox(hBoxSearch, DetailsTextArea);
+//        vBoxdetails.setAlignment(Pos.CENTER);
+//        vBoxdetails.setSpacing(5);
 
-        vBoxButtons = new VBox(downloadButton, backButton);
+        vBoxButtons = new VBox(searchTextField,downloadButton, backButton);
         vBoxButtons.setAlignment(Pos.CENTER);
         vBoxButtons.setSpacing(20);
 
-        secondPart = new HBox(vBoxdetails, vBoxButtons);
-        secondPart.setAlignment(Pos.CENTER);
+//        secondPart = new HBox(vBoxdetails, vBoxButtons);
+//        secondPart.setAlignment(Pos.CENTER);
 
-        vBox = new VBox(firstPart, secondPart);
+        vBox = new VBox(firstPart, vBoxButtons);
         vBox.setSpacing(20);
         vBox.setAlignment(Pos.CENTER);
 
