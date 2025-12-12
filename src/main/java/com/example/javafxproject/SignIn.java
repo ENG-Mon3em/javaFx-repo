@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
+import java.io.File;
 import java.util.Objects;
 
 public class SignIn {
@@ -23,6 +24,7 @@ public class SignIn {
     PasswordField passwordField;
     Button signInButton;
     Button signUpButton;
+    String imagePath;
     Image libraryImage;
     ImageView imageView;
     GridPane rootGridPane;
@@ -52,10 +54,12 @@ public class SignIn {
         rootGridPane.setAlignment(Pos.CENTER);
         rootGridPane.setHgap(10);
         rootGridPane.setVgap(10);
-        libraryImage = new Image(Objects.requireNonNull(getClass().getResource("/Images/Library.jpg")).toString());
+        imagePath = new File("C:\\Repos\\javaFx-repo\\src\\main\\resources\\Images\\library.png").toURI().toString();
+        libraryImage = new Image(imagePath);
         imageView = new ImageView(libraryImage);
         imageView.setFitHeight(200);
         imageView.setFitWidth(300);
+        imageView.setPreserveRatio(true);
     }
 
     // render VBox , HBox & FlowPane

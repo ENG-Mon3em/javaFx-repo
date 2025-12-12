@@ -12,11 +12,15 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
 
+        Home home= new Home();
         viewBooks viewBooks = new viewBooks();
         Store store = new Store();
         SignIn SignIn = new SignIn();
         SignUp SignUp = new SignUp();
 
+        //صفحة حسين
+//        stage.setScene(home.getHomeScene());
+//        stage.setTitle("Home");
         //صفحة حسن
 //        stage.setScene(viewBooks.getScene());
 //        stage.setTitle("viewBooks");
