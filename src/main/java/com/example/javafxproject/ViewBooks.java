@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 
 import java.util.Objects;
 
-public class Store {
+public class ViewBooks {
 
     public Scene getScene() {
 
@@ -34,48 +34,47 @@ public class Store {
         bookName.setCellValueFactory(new PropertyValueFactory("name"));
         TableColumn<Books, String> authorName = new TableColumn("Author");
         authorName.setCellValueFactory(new PropertyValueFactory("Author"));
-        TableColumn<Books, String> edition = new TableColumn("edition");
-        edition.setCellValueFactory(new PropertyValueFactory("edition"));
         TableColumn<Books, String> Storage = new TableColumn("Storage");
         Storage.setCellValueFactory(new PropertyValueFactory("Storage"));
-        table.getColumns().addAll(id, bookName, authorName,edition,Storage);
+        TableColumn<Books, String> edition = new TableColumn("edition");
+        edition.setCellValueFactory(new PropertyValueFactory("edition"));
+        table.getColumns().addAll(id, bookName, authorName,Storage);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.setPrefWidth(800);
 
 
         //second part of page
         //details & download
-        titleLabel = new Label("Store");
-        DetailsTextArea = new TextArea();
-        DetailsTextArea.setPromptText("Book Details");
+        titleLabel = new Label("ViewBooks");
+//        DetailsTextArea = new TextArea();
+//        DetailsTextArea.setPromptText("Book Details");
         searchTextField = new TextField();
         searchTextField.setPromptText("Enter Book Id");
         downloadButton = new Button("Download");
         downloadButton.setId("DownloadButton");
         backButton = new Button("Back");
         backButton.setId("backButton");
-        okButton = new Button("ok");
+//        okButton = new Button("ok");
 
         firstPart = new VBox(titleLabel, table);
         firstPart.setAlignment(Pos.CENTER);
 
-        hBoxSearch = new HBox(searchTextField, okButton);
-        hBoxSearch.setSpacing(5);
-        hBoxSearch.setAlignment(Pos.CENTER);
+//        hBoxSearch = new HBox(searchTextField, okButton);
+//        hBoxSearch.setSpacing(5);
+//        hBoxSearch.setAlignment(Pos.CENTER);
 
-        vBoxdetails = new VBox(hBoxSearch, DetailsTextArea);
-        vBoxdetails.setAlignment(Pos.CENTER);
-        vBoxdetails.setSpacing(5);
+//        vBoxdetails = new VBox(hBoxSearch, DetailsTextArea);
+//        vBoxdetails.setAlignment(Pos.CENTER);
+//        vBoxdetails.setSpacing(5);
 
-        vBoxButtons = new VBox(downloadButton, backButton);
+        vBoxButtons = new VBox(searchTextField , downloadButton, backButton);
         vBoxButtons.setAlignment(Pos.CENTER);
         vBoxButtons.setSpacing(20);
 
-        secondPart = new HBox(vBoxdetails, vBoxButtons);
-        secondPart.setAlignment(Pos.CENTER);
+//        secondPart = new HBox(vBoxdetails, vBoxButtons);
 
 
-        vBox = new VBox(firstPart, secondPart);
+        vBox = new VBox(firstPart, vBoxButtons);
         vBox.setSpacing(20);
         vBox.setAlignment(Pos.CENTER);
 

@@ -12,10 +12,13 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
 
+        ViewBooks viewBooks = new ViewBooks();
         Store store = new Store();
         SignIn SignIn = new SignIn();
         SignUp SignUp = new SignUp();
 
+//        stage.setScene(viewBooks.getScene());
+//        stage.setTitle("viewBooks");
 //        stage.setScene(store.getScene());
 //        stage.setTitle("Store");
 //        stage.setScene(SignUp.getScene());
@@ -24,7 +27,8 @@ public class Main extends Application {
 //        stage.setTitle("SignIn");
 
 
-        stage.setResizable(false);
+//        stage.setResizable(false);
+        stage.setMaximized(true);
         stage.show();
     }
 }
