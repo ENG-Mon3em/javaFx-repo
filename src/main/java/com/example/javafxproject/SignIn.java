@@ -10,45 +10,62 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+
 import java.util.Objects;
 
 public class SignIn {
     public Scene getScene() {
 
-        Label email = new Label("Email");
-        Label pass = new Label("Password");
-        Label space = new Label();
+        Label emailLabel;
+        Label passwordLabel;
+        Label spacerLabel;
+        TextField emailTextField;
+        PasswordField passwordField;
+        Button signInButton;
+        Button signUpButton;
+        Image libraryImage;
+        ImageView imageView;
+        GridPane rootGridPane;
+        VBox buttonVBox;
+        Scene signInScene;
 
-        TextField emailT = new TextField();
-        PasswordField passT = new PasswordField();
 
-        Button signIn = new Button("Sign In");
-        Button signUp = new Button("Sign Up");
+        emailLabel = new Label("Email");
+        passwordLabel = new Label("Password");
+        spacerLabel = new Label();
+        emailTextField = new TextField();
+        passwordField = new PasswordField();
+        signInButton = new Button("Sign In");
+        signUpButton = new Button("Sign Up");
+        rootGridPane = new GridPane();
 
-        signIn.setPrefWidth(200);
-        signUp.setPrefWidth(200);
 
-        Image im = new Image(Objects.requireNonNull(getClass().getResource("/Images/Library.jpg")).toString());
-        ImageView imv = new ImageView(im);
-        imv.setFitHeight(200);
-        imv.setFitWidth(300);
+        signInButton.setPrefWidth(200);
+        signUpButton.setPrefWidth(200);
 
-        GridPane g1 = new GridPane();
-        VBox buttonBox = new VBox(10, signIn, signUp);
-        g1.add(imv, 0, 0, 2, 1);
-        g1.add(email, 0, 2);
-        g1.add(pass, 0, 3);
-        g1.add(emailT, 1, 2);
-        g1.add(passT, 1, 3);
-        g1.add(space, 0, 4);
-        g1.add(buttonBox, 0, 5, 2, 1);
-        g1.setHgap(10);
-        g1.setVgap(10);
-        g1.setAlignment(Pos.CENTER);
-        buttonBox.setAlignment(Pos.CENTER);
 
-        Scene scene = new Scene(g1, 400, 600);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
-        return scene;
+        libraryImage = new Image(Objects.requireNonNull(getClass().getResource("/Images/Library.jpg")).toString());
+        imageView = new ImageView(libraryImage);
+        imageView.setFitHeight(200);
+        imageView.setFitWidth(300);
+
+
+        buttonVBox = new VBox(10, signInButton, signUpButton);
+        rootGridPane.add(imageView, 0, 0, 2, 1);
+        rootGridPane.add(emailLabel, 0, 2);
+        rootGridPane.add(passwordLabel, 0, 3);
+        rootGridPane.add(emailTextField, 1, 2);
+        rootGridPane.add(passwordField, 1, 3);
+        rootGridPane.add(spacerLabel, 0, 4);
+        rootGridPane.add(buttonVBox, 0, 5, 2, 1);
+        rootGridPane.setHgap(10);
+        rootGridPane.setVgap(10);
+        rootGridPane.setAlignment(Pos.CENTER);
+        buttonVBox.setAlignment(Pos.CENTER);
+
+
+        signInScene = new Scene(rootGridPane, 400, 600);
+        signInScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+        return signInScene;
     }
 }
