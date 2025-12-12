@@ -1,5 +1,7 @@
 package com.example.javafxproject;
 
+
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -10,69 +12,74 @@ import javafx.scene.layout.VBox;
 
 import java.util.Objects;
 
-public class Store {
+public class viewBooks {
 
     // declaration the controls
+
     Label titleLabel;
     TextField searchTextField;
     TextArea DetailsTextArea;
     TableView<Books> table;
+    TableColumn<Books, Integer> id;
+    TableColumn<Books, String> bookName;
+    TableColumn<Books, String> authorName;
     Button okButton;
-    Button downloadButton;
+    Button storeButton;
     Button backButton;
     VBox vBoxdetails;
     VBox vBoxButtons;
     VBox vBox;
     VBox firstPart;
-    HBox hBoxSearch;
-    HBox secondPart;
+    HBox hBoxSearch, secondPart;
     FlowPane flowPane;
-    Scene storeScene;
-    TableColumn<Books, Integer> id;
-    TableColumn<Books, String> bookName;
-    TableColumn<Books, String> authorName;
-    TableColumn<Books, String> edition;
-    TableColumn<Books, String> Storage;
+    Scene viewBooksScene;
 
-    // Store Constructor
-    public Store() {
+    //ViewBooks Constructor
+    viewBooks() {
         initControls();
+        initTable();
         renderControls();
     }
 
     // initialization the Controls
-    void initControls() {
-        table = new TableView<>();
-        id = new TableColumn("id");
-        id.setCellValueFactory(new PropertyValueFactory("id"));
-        bookName = new TableColumn("BookName");
-        bookName.setCellValueFactory(new PropertyValueFactory("name"));
-        authorName = new TableColumn("Author");
-        authorName.setCellValueFactory(new PropertyValueFactory("Author"));
-        edition = new TableColumn("edition");
-        edition.setCellValueFactory(new PropertyValueFactory("edition"));
-        Storage = new TableColumn("Storage");
-        Storage.setCellValueFactory(new PropertyValueFactory("Storage"));
-        table.getColumns().addAll(id, bookName, authorName, edition, Storage);
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        table.setPrefWidth(800);
 
-        titleLabel = new Label("Store");
+    void initControls() {
+        titleLabel = new Label("View");
         DetailsTextArea = new TextArea();
         DetailsTextArea.setPromptText("Book Details");
         searchTextField = new TextField();
         searchTextField.setPromptText("Enter Book Id");
-        downloadButton = new Button("Download");
-        downloadButton.setId("DownloadButton");
+        storeButton = new Button("Store");
+        storeButton.setId("DownloadButton");
         backButton = new Button("Back");
         backButton.setId("backButton");
         okButton = new Button("ok");
     }
 
+    // initialization Table & columns
+
+    void initTable() {
+        table = new TableView<>();
+
+        id = new TableColumn<>("id");
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        bookName = new TableColumn<>("BookName");
+        bookName.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        authorName = new TableColumn<>("Author");
+        authorName.setCellValueFactory(new PropertyValueFactory<>("Author"));
+
+        table.getColumns().addAll(id, bookName, authorName);
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    }
+
     // render VBox , HBox & FlowPane
+
     void renderControls() {
         firstPart = new VBox(titleLabel, table);
         firstPart.setAlignment(Pos.CENTER);
+        firstPart.setSpacing(20);
 
         hBoxSearch = new HBox(searchTextField, okButton);
         hBoxSearch.setSpacing(5);
@@ -82,12 +89,12 @@ public class Store {
         vBoxdetails.setAlignment(Pos.CENTER);
         vBoxdetails.setSpacing(5);
 
-        vBoxButtons = new VBox(downloadButton, backButton);
+        vBoxButtons = new VBox(storeButton, backButton);
         vBoxButtons.setAlignment(Pos.CENTER);
         vBoxButtons.setSpacing(20);
 
         secondPart = new HBox(vBoxdetails, vBoxButtons);
-        secondPart.setAlignment(Pos.CENTER);
+        secondPart.setSpacing(10);
 
         vBox = new VBox(firstPart, secondPart);
         vBox.setSpacing(20);
@@ -95,11 +102,12 @@ public class Store {
 
         flowPane = new FlowPane(vBox);
         flowPane.setAlignment(Pos.CENTER);
+        flowPane.setPadding(new Insets(20));
     }
 
-    public Scene getScene() {
-        storeScene = new Scene(flowPane, 650, 720);
-        storeScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
-        return storeScene;
+    Scene getScene() {
+        viewBooksScene = new Scene(flowPane, 650, 750);
+        viewBooksScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+        return viewBooksScene;
     }
 }

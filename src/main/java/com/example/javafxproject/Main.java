@@ -12,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
 
-        ViewBooks viewBooks = new ViewBooks();
+        viewBooks viewBooks = new viewBooks();
         Store store = new Store();
         SignIn SignIn = new SignIn();
         SignUp SignUp = new SignUp();

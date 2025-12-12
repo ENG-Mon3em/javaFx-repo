@@ -4,29 +4,36 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 import java.util.Objects;
 
 public class SignUp {
-    public Scene getScene() {
+    // declaration the controls
+    GridPane rootGridPane;
+    Label nameLabel;
+    TextField nameTextField;
+    Label emailLabel;
+    TextField emailTextField;
+    Label passwordLabel;
+    PasswordField passwordTextField;
+    Label confirmPasswordLabel;
+    PasswordField confirmPasswordField;
+    Button signUpButton;
+    ToggleGroup userTypeToggleGroup;
+    RadioButton userRadioButton;
+    RadioButton adminRadioButton;
+    Scene signUpScene;
+    HBox radioButtonsHBox;
 
+    // SignUp Constructor
+    public SignUp() {
+        initControls();
+        renderControls();
+    }
 
-        GridPane rootGridPane;
-        Label nameLabel;
-        TextField nameTextField;
-        Label emailLabel;
-        TextField emailTextField;
-        Label passwordLabel;
-        PasswordField passwordTextField;
-        Label confirmPasswordLabel;
-        PasswordField confirmPasswordField;
-        Button signUpButton;
-        ToggleGroup userTypeToggleGroup;
-        RadioButton userRadioButton;
-        RadioButton adminRadioButton;
-        Scene signUpScene;
-
-
+    // initialization the Controls
+    void initControls() {
         rootGridPane = new GridPane();
         nameLabel = new Label("Name:");
         nameTextField = new TextField();
@@ -42,10 +49,18 @@ public class SignUp {
         userRadioButton = new RadioButton("user");
         adminRadioButton = new RadioButton("admin");
 
-
         userTypeToggleGroup.getToggles().addAll(userRadioButton, adminRadioButton);
 
+        radioButtonsHBox = new HBox(20, userRadioButton, adminRadioButton);
+        radioButtonsHBox.setAlignment(Pos.CENTER_LEFT);
 
+        rootGridPane.setVgap(10);
+        rootGridPane.setHgap(10);
+        rootGridPane.setAlignment(Pos.CENTER);
+    }
+
+    // render VBox , HBox & FlowPane &gridPane
+    void renderControls() {
         rootGridPane.add(nameLabel, 0, 0);
         rootGridPane.add(nameTextField, 1, 0);
         rootGridPane.add(emailLabel, 0, 1);
@@ -54,16 +69,11 @@ public class SignUp {
         rootGridPane.add(passwordTextField, 1, 2);
         rootGridPane.add(confirmPasswordLabel, 0, 3);
         rootGridPane.add(confirmPasswordField, 1, 3);
-        rootGridPane.add(userRadioButton, 0, 4);
-        rootGridPane.add(adminRadioButton, 1, 4);
-        rootGridPane.add(signUpButton, 1, 5);
+        rootGridPane.add(radioButtonsHBox, 1, 4);
+        rootGridPane.add(signUpButton, 1, 5, 2, 1);
+    }
 
-
-        rootGridPane.setVgap(10);
-        rootGridPane.setHgap(10);
-        rootGridPane.setAlignment(Pos.CENTER);
-
-
+    public Scene getScene() {
         signUpScene = new Scene(rootGridPane, 650, 720);
         signUpScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         return signUpScene;
