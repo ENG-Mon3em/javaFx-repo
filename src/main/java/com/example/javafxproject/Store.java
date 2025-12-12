@@ -62,8 +62,8 @@ public class Store {
         DetailsTextArea.setPromptText("Book Details");
         searchTextField = new TextField();
         searchTextField.setPromptText("Enter Book Id");
+        searchTextField.setMaxWidth(200);
         downloadButton = new Button("Download");
-        downloadButton.setId("DownloadButton");
         backButton = new Button("Back");
         backButton.setId("backButton");
         okButton = new Button("ok");

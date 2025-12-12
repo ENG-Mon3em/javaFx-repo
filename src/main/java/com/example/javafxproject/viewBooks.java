@@ -49,6 +49,7 @@ public class viewBooks {
         DetailsTextArea.setPromptText("Book Details");
         searchTextField = new TextField();
         searchTextField.setPromptText("Enter Book Id");
+        searchTextField.setMaxWidth(200);
         storeButton = new Button("Store");
         storeButton.setId("DownloadButton");
         backButton = new Button("Back");

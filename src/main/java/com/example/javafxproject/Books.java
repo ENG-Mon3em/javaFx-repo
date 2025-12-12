@@ -8,6 +8,9 @@ public class Books {
     public String Storage;
     public String edition;
     public String bookDetails;
+    private String genre;
+    private String pages;
+    private String language;
 
     public Books(int id, String bookName, String authorName, String storage, String bookDetails) {
         this.id = id;
