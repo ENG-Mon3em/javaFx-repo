@@ -66,6 +66,7 @@ public class viewBooks {
 
         table.getColumns().addAll(id, bookName, authorName);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        table.setPrefWidth(800);
     }
 
     void renderControls() {
@@ -99,7 +100,7 @@ public class viewBooks {
 
     Scene getScene() {
         if (viewBooksScene == null) {
-            viewBooksScene = new Scene(flowPane,1500,800);
+            viewBooksScene = new Scene(flowPane, 1500, 800);
             viewBooksScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         }
         return viewBooksScene;

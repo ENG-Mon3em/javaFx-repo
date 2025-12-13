@@ -28,6 +28,7 @@ public class Main extends Application {
         home.editBookButton.setOnAction(e -> stage.setScene(adminBooks.getScene()));
         home.shopButton.setOnAction(e -> stage.setScene(store.getScene()));
         home.infoButton.setOnAction(e -> stage.setScene(viewBooks.getScene()));
+        home.logOutButton.setOnAction(e -> stage.setScene(signIn.getScene()));
 
         adminUsers.back.setOnAction(e -> stage.setScene(home.getHomeScene()));
         adminUsers.users.setOnAction(e -> stage.setScene(adminBooks.getScene()));
