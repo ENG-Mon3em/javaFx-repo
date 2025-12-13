@@ -147,10 +147,10 @@ public class AdminBooks {
     }
 
     public Scene getScene() {
-        adminScene = new Scene(rootHBox);
-        adminScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
-        users.getStyleClass().add("button-users");
-
+        if (adminScene == null) {
+            adminScene = new Scene(rootHBox,1500,800);
+            adminScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+        }
         return adminScene;
     }
 }

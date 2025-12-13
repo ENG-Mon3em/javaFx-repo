@@ -12,7 +12,6 @@ import java.util.Objects;
 
 public class Store {
 
-    // declaration the controls
     Label titleLabel;
     TextField searchTextField;
     TextArea DetailsTextArea;
@@ -34,13 +33,11 @@ public class Store {
     TableColumn<BooksData, String> edition;
     TableColumn<BooksData, String> Storage;
 
-    // Store Constructor
     public Store() {
         initControls();
         renderControls();
     }
 
-    // initialization the Controls
     void initControls() {
         table = new TableView<>();
         id = new TableColumn("id");
@@ -69,25 +66,13 @@ public class Store {
         okButton = new Button("ok");
     }
 
-    // render VBox , HBox & FlowPane
     void renderControls() {
         firstPart = new VBox(titleLabel, table);
         firstPart.setAlignment(Pos.CENTER);
 
-//        hBoxSearch = new HBox(searchTextField, okButton);
-//        hBoxSearch.setSpacing(5);
-//        hBoxSearch.setAlignment(Pos.CENTER);
-
-//        vBoxdetails = new VBox(hBoxSearch, DetailsTextArea);
-//        vBoxdetails.setAlignment(Pos.CENTER);
-//        vBoxdetails.setSpacing(5);
-
         vBoxButtons = new VBox(searchTextField,downloadButton, backButton);
         vBoxButtons.setAlignment(Pos.CENTER);
         vBoxButtons.setSpacing(20);
-
-//        secondPart = new HBox(vBoxdetails, vBoxButtons);
-//        secondPart.setAlignment(Pos.CENTER);
 
         vBox = new VBox(firstPart, vBoxButtons);
         vBox.setSpacing(20);
@@ -98,8 +83,10 @@ public class Store {
     }
 
     public Scene getScene() {
-        storeScene = new Scene(flowPane);
-        storeScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+        if (storeScene == null) {
+            storeScene = new Scene(flowPane,1500,800);
+            storeScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+        }
         return storeScene;
     }
 }

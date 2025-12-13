@@ -9,7 +9,6 @@ import javafx.scene.layout.HBox;
 import java.util.Objects;
 
 public class SignUp {
-    // declaration the controls
     GridPane rootGridPane;
     Label nameLabel;
     TextField nameTextField;
@@ -26,13 +25,11 @@ public class SignUp {
     Scene signUpScene;
     HBox radioButtonsHBox;
 
-    // SignUp Constructor
     public SignUp() {
         initControls();
         renderControls();
     }
 
-    // initialization the Controls
     void initControls() {
         rootGridPane = new GridPane();
         nameLabel = new Label("Name:");
@@ -59,7 +56,6 @@ public class SignUp {
         rootGridPane.setAlignment(Pos.CENTER);
     }
 
-    // render VBox , HBox & FlowPane &gridPane
     void renderControls() {
         rootGridPane.add(nameLabel, 0, 0);
         rootGridPane.add(nameTextField, 1, 0);
@@ -74,8 +70,10 @@ public class SignUp {
     }
 
     public Scene getScene() {
-        signUpScene = new Scene(rootGridPane);
-        signUpScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+        if (signUpScene == null) {
+            signUpScene = new Scene(rootGridPane,1500,800);
+            signUpScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+        }
         return signUpScene;
     }
 }

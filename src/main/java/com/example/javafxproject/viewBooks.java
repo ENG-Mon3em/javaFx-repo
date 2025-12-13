@@ -14,8 +14,6 @@ import java.util.Objects;
 
 public class viewBooks {
 
-    // declaration the controls
-
     Label titleLabel;
     TextField searchTextField;
     TextArea DetailsTextArea;
@@ -34,14 +32,11 @@ public class viewBooks {
     FlowPane flowPane;
     Scene viewBooksScene;
 
-    //ViewBooks Constructor
     viewBooks() {
         initControls();
         initTable();
         renderControls();
     }
-
-    // initialization the Controls
 
     void initControls() {
         titleLabel = new Label("View");
@@ -56,8 +51,6 @@ public class viewBooks {
         backButton.setId("backButton");
         okButton = new Button("ok");
     }
-
-    // initialization Table & columns
 
     void initTable() {
         table = new TableView<>();
@@ -74,8 +67,6 @@ public class viewBooks {
         table.getColumns().addAll(id, bookName, authorName);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
-
-    // render VBox , HBox & FlowPane
 
     void renderControls() {
         firstPart = new VBox(titleLabel, table);
@@ -107,8 +98,10 @@ public class viewBooks {
     }
 
     Scene getScene() {
-        viewBooksScene = new Scene(flowPane);
-        viewBooksScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+        if (viewBooksScene == null) {
+            viewBooksScene = new Scene(flowPane,1500,800);
+            viewBooksScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+        }
         return viewBooksScene;
     }
 }

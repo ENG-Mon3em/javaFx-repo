@@ -16,7 +16,6 @@ import java.util.Objects;
 
 public class SignIn {
 
-    // declaration the controls
     Label emailLabel;
     Label passwordLabel;
     Label spacerLabel;
@@ -31,13 +30,11 @@ public class SignIn {
     VBox buttonVBox;
     Scene signInScene;
 
-    //SignIn Constructor
     SignIn() {
         initControls();
         renderControls();
     }
 
-    // initialization the Controls
     void initControls() {
         emailLabel = new Label("Email");
         emailTextField = new TextField();
@@ -62,7 +59,6 @@ public class SignIn {
         imageView.setPreserveRatio(true);
     }
 
-    // render VBox , HBox & FlowPane
     void renderControls() {
         rootGridPane.add(imageView, 0, 0, 2, 1);
         rootGridPane.add(emailLabel, 0, 2);
@@ -74,8 +70,10 @@ public class SignIn {
     }
 
     public Scene getScene() {
-        signInScene = new Scene(rootGridPane);
-        signInScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+        if (signInScene == null) {
+            signInScene = new Scene(rootGridPane,1500,800);
+            signInScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+        }
         return signInScene;
     }
 }

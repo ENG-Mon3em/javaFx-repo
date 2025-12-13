@@ -4,10 +4,9 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    static void main(String[] args) {
+    public static void main(String[] args) {
         launch(args);
     }
-
 
     @Override
     public void start(Stage stage) {
@@ -17,37 +16,32 @@ public class Main extends Application {
         Home home = new Home();
         viewBooks viewBooks = new viewBooks();
         Store store = new Store();
-        SignIn SignIn = new SignIn();
-        SignUp SignUp = new SignUp();
+        SignIn signIn = new SignIn();
+        SignUp signUp = new SignUp();
 
-        // شيل الكومنت من على الصفحة اللي عايز تشوفها
+        signIn.signInButton.setOnAction(e -> stage.setScene(home.getHomeScene()));
+        signIn.signUpButton.setOnAction(e -> stage.setScene(signUp.getScene()));
 
+        signUp.signUpButton.setOnAction(e -> stage.setScene(signIn.getScene()));
 
-        //صفحة احمد
-//        stage.setScene(adminUsers.getScene());
-//        stage.setTitle("AdminUsers");
-        //صفحة رجب
-//        stage.setScene(adminBooks.getScene());
-//        stage.setTitle("AdminBooks");
-        //صفحة حسين
-//        stage.setScene(home.getHomeScene());
-//        stage.setTitle("Home");
-        //صفحة حسن
-//        stage.setScene(viewBooks.getScene());
-//        stage.setTitle("viewBooks");
-        //صفحة منعم
-//        stage.setScene(store.getScene());
-//        stage.setTitle("Store");
-        //صفحة شهاب
-//        stage.setScene(SignUp.getScene());
-//        stage.setTitle("SignUp");
-        //صفحة سيد
-//        stage.setScene(SignIn.getScene());
-//        stage.setTitle("SignIn");
+        home.editUserButton.setOnAction(e -> stage.setScene(adminUsers.getScene()));
+        home.editBookButton.setOnAction(e -> stage.setScene(adminBooks.getScene()));
+        home.shopButton.setOnAction(e -> stage.setScene(store.getScene()));
+        home.infoButton.setOnAction(e -> stage.setScene(viewBooks.getScene()));
 
+        adminUsers.back.setOnAction(e -> stage.setScene(home.getHomeScene()));
+        adminUsers.users.setOnAction(e -> stage.setScene(adminBooks.getScene()));
 
-        stage.setResizable(false);
-        stage.setMaximized(true);
+        adminBooks.back.setOnAction(e -> stage.setScene(home.getHomeScene()));
+        adminBooks.users.setOnAction(e -> stage.setScene(adminUsers.getScene()));
+
+        store.backButton.setOnAction(e -> stage.setScene(home.getHomeScene()));
+
+        viewBooks.backButton.setOnAction(e -> stage.setScene(home.getHomeScene()));
+        viewBooks.storeButton.setOnAction(e -> stage.setScene(store.getScene()));
+
+        stage.setScene(signIn.getScene());
+        stage.setTitle("Library System");
         stage.show();
     }
 }

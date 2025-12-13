@@ -18,7 +18,6 @@ import java.util.Objects;
 
 public class Home {
 
-    // declaration the controls
     Label welcomeLabel;
     Button editUserButton;
     Button editBookButton;
@@ -33,13 +32,11 @@ public class Home {
     VBox mainVBox;
     Scene homeScene;
 
-    // Home Constructor
     public Home() {
         initControls();
         renderControls();
     }
 
-    // initialization the Controls
     void initControls() {
 
         welcomeLabel = new Label("Welcome to The Library System");
@@ -53,7 +50,6 @@ public class Home {
         authorName = new TableColumn<>("authorName");
 
 
-//        idColumn.setStyle("-fx-alignment: CENTER-RIGHT;");
         name.setCellValueFactory(new PropertyValueFactory<>("Name"));
         authorName.setCellValueFactory(new PropertyValueFactory<>("authorName"));
         table.getColumns().addAll(name, authorName);
@@ -69,7 +65,6 @@ public class Home {
         imageView.setPreserveRatio(true);
     }
 
-    // render VBox , HBox & FlowPane
     void renderControls() {
         HBox hBoxBooksButtons = new HBox(infoButton, shopButton, editUserButton, editBookButton);
         hBoxBooksButtons.setAlignment(Pos.CENTER);
@@ -81,8 +76,10 @@ public class Home {
     }
 
     public Scene getHomeScene() {
-        homeScene = new Scene(mainVBox);
-        homeScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+        if (homeScene == null) {
+            homeScene = new Scene(mainVBox,1500,800);
+            homeScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+        }
         return homeScene;
     }
 }
