@@ -74,7 +74,7 @@ public class SignIn {
     }
 
     public Scene getScene() {
-        signInScene = new Scene(rootGridPane, 650, 720);
+        signInScene = new Scene(rootGridPane);
         signInScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         return signInScene;
     }

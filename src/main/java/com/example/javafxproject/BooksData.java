@@ -1,6 +1,6 @@
 package com.example.javafxproject;
 
-public class Books {
+public class BooksData {
 
     public int id;
     public String bookName;
@@ -12,7 +12,7 @@ public class Books {
     private String pages;
     private String language;
 
-    public Books(int id, String bookName, String authorName, String storage, String bookDetails) {
+    public BooksData(int id, String bookName, String authorName, String storage, String bookDetails) {
         this.id = id;
         this.bookName = bookName;
         this.authorName = authorName;

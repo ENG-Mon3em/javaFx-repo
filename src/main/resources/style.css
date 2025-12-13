@@ -10,16 +10,18 @@
 .button {
     -fx-background-color: #6B481A;
     -fx-text-fill: white;
-    -fx-font-size: 16px;
     -fx-padding: 8px 20px;
     -fx-background-radius: 6px;
     -fx-border-radius: 6px;
+    -fx-transition: -fx-background-color 0.2s ease;
+}
+.button:hover {
+    -fx-background-color: #4D3312;
 }
 
 #backButton {
     -fx-background-color: #FCEDD7;
     -fx-text-fill: #4E342E;
-    -fx-font-size: 16px;
     -fx-padding: 8px 20px;
     -fx-border-color: #A38E75;
     -fx-border-width: 1.5px;

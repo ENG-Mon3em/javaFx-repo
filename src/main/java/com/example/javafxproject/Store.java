@@ -16,7 +16,7 @@ public class Store {
     Label titleLabel;
     TextField searchTextField;
     TextArea DetailsTextArea;
-    TableView<Books> table;
+    TableView<BooksData> table;
     Button okButton;
     Button downloadButton;
     Button backButton;
@@ -28,11 +28,11 @@ public class Store {
     HBox secondPart;
     FlowPane flowPane;
     Scene storeScene;
-    TableColumn<Books, Integer> id;
-    TableColumn<Books, String> bookName;
-    TableColumn<Books, String> authorName;
-    TableColumn<Books, String> edition;
-    TableColumn<Books, String> Storage;
+    TableColumn<BooksData, Integer> id;
+    TableColumn<BooksData, String> bookName;
+    TableColumn<BooksData, String> authorName;
+    TableColumn<BooksData, String> edition;
+    TableColumn<BooksData, String> Storage;
 
     // Store Constructor
     public Store() {
@@ -98,7 +98,7 @@ public class Store {
     }
 
     public Scene getScene() {
-        storeScene = new Scene(flowPane, 650, 720);
+        storeScene = new Scene(flowPane);
         storeScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         return storeScene;
     }

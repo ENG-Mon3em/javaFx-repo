@@ -1,6 +1,5 @@
 package com.example.javafxproject;
 
-import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -11,7 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.File;
@@ -20,15 +19,14 @@ import java.util.Objects;
 public class Home {
 
     // declaration the controls
-    GridPane rootGridPane;
     Label welcomeLabel;
     Button editUserButton;
     Button editBookButton;
     Button shopButton;
     Button infoButton;
-    TableView<BookPre> table;
-    TableColumn<BookPre, String> nameColumn;
-    TableColumn<BookPre, String> idColumn;
+    TableView<BooksData> table;
+    TableColumn<BooksData, String> name;
+    TableColumn<BooksData, String> authorName;
     String imagePath;
     Image libraryImage;
     ImageView imageView;
@@ -43,11 +41,6 @@ public class Home {
 
     // initialization the Controls
     void initControls() {
-        rootGridPane = new GridPane();
-        rootGridPane.setHgap(15);
-        rootGridPane.setVgap(15);
-        rootGridPane.setAlignment(Pos.CENTER);
-        rootGridPane.setPadding(new Insets(20));
 
         welcomeLabel = new Label("Welcome to The Library System");
         editUserButton = new Button("Edit User");
@@ -56,29 +49,17 @@ public class Home {
         infoButton = new Button("Info");
 
         table = new TableView<>();
-        nameColumn = new TableColumn<>("Name");
-        idColumn = new TableColumn<>("Id");
+        name = new TableColumn<>("Name");
+        authorName = new TableColumn<>("authorName");
 
-        idColumn.setStyle("-fx-alignment: CENTER-RIGHT;");
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        table.getColumns().addAll(nameColumn, idColumn);
+
+//        idColumn.setStyle("-fx-alignment: CENTER-RIGHT;");
+        name.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        authorName.setCellValueFactory(new PropertyValueFactory<>("authorName"));
+        table.getColumns().addAll(name, authorName);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.setMaxWidth(500);
         table.setMaxHeight(300);
-
-        table.setItems(FXCollections.observableArrayList(
-                new BookPre("Java Programming", "B001"),
-                new BookPre("Data Structures", "B002"),
-                new BookPre("Algorithms", "B003"),
-                new BookPre("Operating Systems", "B004"),
-                new BookPre("Database Systems", "B005"),
-                new BookPre("Computer Networks", "B006"),
-                new BookPre("Artificial Intelligence", "B007"),
-                new BookPre("Machine Learning", "B008"),
-                new BookPre("Web Development", "B009"),
-                new BookPre("Software Engineering", "B010")
-        ));
 
         imagePath = new File("C:\\Repos\\javaFx-repo\\src\\main\\resources\\Images\\library.png").toURI().toString();
         libraryImage = new Image(imagePath);
@@ -90,16 +71,13 @@ public class Home {
 
     // render VBox , HBox & FlowPane
     void renderControls() {
-        GridPane.setColumnSpan(welcomeLabel, 10);
-        rootGridPane.add(welcomeLabel, 0, 0);
-        rootGridPane.add(infoButton, 0, 1);
-        rootGridPane.add(shopButton, 1, 1);
-        rootGridPane.add(editUserButton, 2, 1);
-        rootGridPane.add(editBookButton, 3, 1);
-
-        mainVBox = new VBox(imageView,rootGridPane, table);
-        mainVBox.setPadding(new Insets(20));
+        HBox hBoxBooksButtons = new HBox(infoButton, shopButton, editUserButton, editBookButton);
+        hBoxBooksButtons.setAlignment(Pos.CENTER);
+        hBoxBooksButtons.setSpacing(20);
+        mainVBox = new VBox(imageView, welcomeLabel, hBoxBooksButtons, table);
         mainVBox.setAlignment(Pos.CENTER);
+        mainVBox.setSpacing(20);
+        mainVBox.setPadding(new Insets(20));
     }
 
     public Scene getHomeScene() {

@@ -19,10 +19,10 @@ public class viewBooks {
     Label titleLabel;
     TextField searchTextField;
     TextArea DetailsTextArea;
-    TableView<Books> table;
-    TableColumn<Books, Integer> id;
-    TableColumn<Books, String> bookName;
-    TableColumn<Books, String> authorName;
+    TableView<BooksData> table;
+    TableColumn<BooksData, Integer> id;
+    TableColumn<BooksData, String> bookName;
+    TableColumn<BooksData, String> authorName;
     Button okButton;
     Button storeButton;
     Button backButton;
@@ -107,7 +107,7 @@ public class viewBooks {
     }
 
     Scene getScene() {
-        viewBooksScene = new Scene(flowPane, 650, 750);
+        viewBooksScene = new Scene(flowPane);
         viewBooksScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         return viewBooksScene;
     }

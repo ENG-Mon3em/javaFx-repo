@@ -12,13 +12,20 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
 
-        AdminBooks adminBooks=new AdminBooks();
-        Home home= new Home();
+        AdminUsers adminUsers = new AdminUsers();
+        AdminBooks adminBooks = new AdminBooks();
+        Home home = new Home();
         viewBooks viewBooks = new viewBooks();
         Store store = new Store();
         SignIn SignIn = new SignIn();
         SignUp SignUp = new SignUp();
 
+        // شيل الكومنت من على الصفحة اللي عايز تشوفها
+
+
+        //صفحة احمد
+//        stage.setScene(adminUsers.getScene());
+//        stage.setTitle("AdminUsers");
         //صفحة رجب
 //        stage.setScene(adminBooks.getScene());
 //        stage.setTitle("AdminBooks");
@@ -39,7 +46,7 @@ public class Main extends Application {
 //        stage.setTitle("SignIn");
 
 
-//        stage.setResizable(false);
+        stage.setResizable(false);
         stage.setMaximized(true);
         stage.show();
     }

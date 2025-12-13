@@ -1,12 +1,12 @@
 package com.example.javafxproject;
 
-public class Users {
+public class UsersData {
 
     public int id ;
     public String name;
     public String userType;
 
-    public Users(int id, String name, String userType) {
+    public UsersData(int id, String name, String userType) {
         this.id = id;
         this.name = name;
         this.userType = userType;
@@ -38,7 +38,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return "Users{" +
+        return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", userType='" + userType + '\'' +
