@@ -45,6 +45,7 @@ public class AdminUsers {
 
     public AdminUsers() {
         initControls();
+        initActions();
         renderControls();
     }
 
@@ -96,6 +97,22 @@ public class AdminUsers {
         table.setPrefWidth(900);
     }
 
+    void initActions(){
+
+        add.setOnAction(e -> {
+            int id = Integer.parseInt(tUserID.getText());
+            String name = tUserName.getText();
+            String type = tUserType.getText();
+            table.getItems().addAll(new UsersData(id,name,type));
+        });
+        clear.setOnAction(e -> {
+            tUserID.clear();
+            tUserName.clear();
+            tUserType.clear();
+        });
+
+
+    }
     void renderControls() {
         grid.add(titleLabel, 0, 0, 2, 1);
 

@@ -18,12 +18,12 @@ public class AdminBooks {
     Label bookTitleLabel;
     Label authorLabel;
     Label pubYearLabel;
-    Label priceLabel;
+    Label StorageLabel;
     TextField tBookID;
     TextField tTitle;
     TextField tAuthor;
     TextField tPubYear;
-    TextField tPrice;
+    TextField tStorage;
     TextField searchField;
     Button add;
     Button update;
@@ -45,22 +45,23 @@ public class AdminBooks {
 
     public AdminBooks() {
         initControls();
+        initActions();
         renderControls();
     }
 
     void initControls() {
         titleLabel = new Label("Book Information");
-        bookIdLabel = new Label("ID:");
-        bookTitleLabel = new Label("BookName:");
-        authorLabel = new Label("AuthorName:");
-        pubYearLabel = new Label("Edition:");
-        priceLabel = new Label("Storage:");
+        bookIdLabel = new Label("BookID:");
+        bookTitleLabel = new Label("BookTitle:");
+        authorLabel = new Label("Author:");
+        pubYearLabel = new Label("PubYear:");
+        StorageLabel = new Label("Storage:");
 
         tBookID = new TextField();
         tTitle = new TextField();
         tAuthor = new TextField();
         tPubYear = new TextField();
-        tPrice = new TextField();
+        tStorage = new TextField();
         searchField = new TextField();
         searchField.setPromptText("Search by BookID");
 
@@ -82,29 +83,47 @@ public class AdminBooks {
         table = new TableView<>();
 
 
-        TableColumn<BooksData, String> id = new TableColumn<>("BookID");
-        id.setCellValueFactory(new PropertyValueFactory<>("BookID"));
+        TableColumn<BooksData, Integer> id = new TableColumn<>("BookID");
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
         id.setPrefWidth(130);
 
-        TableColumn<BooksData, String> bookName = new TableColumn<>("bookName");
+        TableColumn<BooksData, String> bookName = new TableColumn<>("BookTitle");
         bookName.setCellValueFactory(new PropertyValueFactory<>("bookName"));
         bookName.setPrefWidth(130);
 
-        TableColumn<BooksData, String> authorName = new TableColumn<>("authorName");
+        TableColumn<BooksData, String> authorName = new TableColumn<>("Author");
         authorName.setCellValueFactory(new PropertyValueFactory<>("authorName"));
         authorName.setPrefWidth(130);
 
-        TableColumn<BooksData, String> edition = new TableColumn<>("edition");
-        edition.setCellValueFactory(new PropertyValueFactory<>("edition"));
-        edition.setPrefWidth(130);
+        TableColumn<BooksData, String> PubYear = new TableColumn<>("PubYear");
+        PubYear.setCellValueFactory(new PropertyValueFactory<>("PubYear"));
+        PubYear.setPrefWidth(130);
 
-        TableColumn<BooksData, Double> Storage = new TableColumn<>("Storage");
+        TableColumn<BooksData, Double> Storage = new TableColumn<>("Storage(MB)");
         Storage.setCellValueFactory(new PropertyValueFactory<>("Storage"));
         Storage.setPrefWidth(100);
 
-        table.getColumns().addAll(id, bookName, authorName, edition, Storage);
+        table.getColumns().addAll(id, bookName, authorName, PubYear, Storage);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.setPrefWidth(900);
+    }
+    void initActions(){
+        add.setOnAction(e -> {
+            int id = Integer.parseInt(tBookID.getText());
+            String title = tTitle.getText();
+            String author = tAuthor.getText();
+            int year = Integer.parseInt(tPubYear.getText());
+            double storage = Double.parseDouble(tStorage.getText());
+
+            table.getItems().add(new BooksData(id, title, author, storage, year));
+        });
+        clear.setOnAction(e -> {
+            tBookID.clear();
+            tTitle.clear();
+            tAuthor.clear();
+            tPubYear.clear();
+            tStorage.clear();
+        });
     }
 
     void renderControls() {
@@ -118,8 +137,8 @@ public class AdminBooks {
         grid.add(pubYearLabel, 0, 4);
         grid.add(tPubYear, 1, 4);
 
-        grid.add(priceLabel, 0, 5);
-        grid.add(tPrice, 1, 5);
+        grid.add(StorageLabel, 0, 5);
+        grid.add(tStorage, 1, 5);
 
         row1 = new HBox(10, add, update, delete);
         row1.setAlignment(Pos.CENTER);
