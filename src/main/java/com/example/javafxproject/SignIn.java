@@ -33,6 +33,7 @@ public class SignIn {
     SignIn() {
         initControls();
         renderControls();
+        initActions();
     }
 
     void initControls() {
@@ -67,6 +68,20 @@ public class SignIn {
         rootGridPane.add(passwordField, 1, 3);
         rootGridPane.add(spacerLabel, 0, 4);
         rootGridPane.add(buttonVBox, 0, 5, 2, 1);
+    }
+
+    void initActions() {
+
+        signInButton.setOnAction(event -> {
+            Home home = new Home();
+            Main.mainStage.setScene(home.getHomeScene());
+        });
+
+
+        signUpButton.setOnAction(e -> {
+            SignUp signUp = new SignUp();
+            Main.mainStage.setScene(signUp.getScene());
+        });
     }
 
     public Scene getScene() {

@@ -36,6 +36,7 @@ public class Store {
     public Store() {
         initControls();
         renderControls();
+        initActions();
     }
 
     void initControls() {
@@ -69,6 +70,7 @@ public class Store {
     void renderControls() {
         firstPart = new VBox(titleLabel, table);
         firstPart.setAlignment(Pos.CENTER);
+        firstPart.setSpacing(20);
 
         vBoxButtons = new VBox(searchTextField,downloadButton, backButton);
         vBoxButtons.setAlignment(Pos.CENTER);
@@ -80,6 +82,21 @@ public class Store {
 
         flowPane = new FlowPane(vBox);
         flowPane.setAlignment(Pos.CENTER);
+    }
+
+    void initActions() {
+        downloadButton.setOnAction(event -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Coming Soon..");
+            alert.setHeaderText(null);
+            alert.setContentText("Downloading is not available right now.\nYou can read the book from the App.");
+            alert.showAndWait();
+        });
+
+        backButton.setOnAction(event -> {
+            Home home = new Home();
+            Main.mainStage.setScene(home.getHomeScene());
+        });
     }
 
     public Scene getScene() {

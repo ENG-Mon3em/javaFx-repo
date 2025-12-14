@@ -30,7 +30,7 @@ public class AdminUsers {
     Button search;
     Button clear;
     Button back;
-    Button users;
+    Button books;
     GridPane grid;
     HBox row1;
     HBox row2;
@@ -70,7 +70,7 @@ public class AdminUsers {
         clear = new Button("Clear \n Fields");
         back = new Button("Back");
         back.setId("backButton");
-        users = new Button("Books");
+        books = new Button("Books");
 
         grid = new GridPane();
         grid.setPadding(new Insets(20));
@@ -98,6 +98,15 @@ public class AdminUsers {
     }
 
     void initActions(){
+        books.setOnAction(event -> {
+            AdminBooks adminBooks = new AdminBooks();
+            Main.mainStage.setScene(adminBooks.getScene());
+        });
+
+        back.setOnAction(event -> {
+            Home home = new Home();
+            Main.mainStage.setScene(home.getHomeScene());
+        });
 
         add.setOnAction(e -> {
             int id = Integer.parseInt(tUserID.getText());
@@ -105,6 +114,7 @@ public class AdminUsers {
             String type = tUserType.getText();
             table.getItems().addAll(new UsersData(id,name,type));
         });
+
         clear.setOnAction(e -> {
             tUserID.clear();
             tUserName.clear();
@@ -139,7 +149,7 @@ public class AdminUsers {
         grid.add(row2, 1, 4);
         grid.add(row3, 0, 6);
 
-        HBox hBoxUsersAndBack = new HBox(back, users);
+        HBox hBoxUsersAndBack = new HBox(back, books);
         hBoxUsersAndBack.setAlignment(Pos.CENTER);
         hBoxUsersAndBack.setSpacing(10);
         grid.add(hBoxUsersAndBack, 0, 8);

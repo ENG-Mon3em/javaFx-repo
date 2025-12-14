@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 
 import java.util.Objects;
 
-public class viewBooks {
+public class ViewBooks {
 
     Label titleLabel;
     TextField searchTextField;
@@ -32,10 +32,11 @@ public class viewBooks {
     FlowPane flowPane;
     Scene viewBooksScene;
 
-    viewBooks() {
+    ViewBooks() {
         initControls();
         initTable();
         renderControls();
+        initActions();
     }
 
     void initControls() {
@@ -87,6 +88,7 @@ public class viewBooks {
         vBoxButtons.setSpacing(20);
 
         secondPart = new HBox(vBoxdetails, vBoxButtons);
+        secondPart.setAlignment(Pos.CENTER);
         secondPart.setSpacing(10);
 
         vBox = new VBox(firstPart, secondPart);
@@ -96,6 +98,18 @@ public class viewBooks {
         flowPane = new FlowPane(vBox);
         flowPane.setAlignment(Pos.CENTER);
         flowPane.setPadding(new Insets(20));
+    }
+
+    void initActions() {
+        storeButton.setOnAction(event -> {
+            Store store = new Store();
+            Main.mainStage.setScene(store.getScene());
+        });
+
+        backButton.setOnAction(event -> {
+            Home home = new Home();
+            Main.mainStage.setScene(home.getHomeScene());
+        });
     }
 
     Scene getScene() {

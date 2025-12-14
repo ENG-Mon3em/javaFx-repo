@@ -108,6 +108,16 @@ public class AdminBooks {
         table.setPrefWidth(900);
     }
     void initActions(){
+        users.setOnAction(event -> {
+            AdminUsers adminUsers = new AdminUsers();
+            Main.mainStage.setScene(adminUsers.getScene());
+        });
+
+        back.setOnAction(event -> {
+            Home home = new Home();
+            Main.mainStage.setScene(home.getHomeScene());
+        });
+
         add.setOnAction(e -> {
             int id = Integer.parseInt(tBookID.getText());
             String title = tTitle.getText();
@@ -117,6 +127,7 @@ public class AdminBooks {
 
             table.getItems().add(new BooksData(id, title, author, storage, year));
         });
+
         clear.setOnAction(e -> {
             tBookID.clear();
             tTitle.clear();
