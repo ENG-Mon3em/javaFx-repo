@@ -5,19 +5,18 @@ public class BooksData {
     public int id;
     public String bookName;
     public String authorName;
-    public String Storage;
-    public String edition;
-    public String bookDetails;
-    private String genre;
-    private String pages;
-    private String language;
+    public double Storage;
+    public int PubYear;
 
-    public BooksData(int id, String bookName, String authorName, String storage, String bookDetails) {
+    public BooksData() {
+    }
+
+    public BooksData(int id, String bookName, String authorName, double storage, int pubYear) {
         this.id = id;
         this.bookName = bookName;
         this.authorName = authorName;
         Storage = storage;
-        this.bookDetails = bookDetails;
+        PubYear = pubYear;
     }
 
     public int getId() {
@@ -44,30 +43,30 @@ public class BooksData {
         this.authorName = authorName;
     }
 
-    public String getBookDetails() {
-        return bookDetails;
-    }
-
-    public void setBookDetails(String bookDetails) {
-        this.bookDetails = bookDetails;
-    }
-
-    public String getStorage() {
+    public double getStorage() {
         return Storage;
     }
 
-    public void setStorage(String storage) {
+    public void setStorage(double storage) {
         Storage = storage;
+    }
+
+    public int getPubYear() {
+        return PubYear;
+    }
+
+    public void setPubYear(int pubYear) {
+        PubYear = pubYear;
     }
 
     @Override
     public String toString() {
-        return "Books{" +
+        return "BooksData{" +
                 "id=" + id +
                 ", bookName='" + bookName + '\'' +
                 ", authorName='" + authorName + '\'' +
-                ", Storage='" + Storage + '\'' +
-                ", bookDetails='" + bookDetails + '\'' +
+                ", Storage=" + Storage +
+                ", PubYear=" + PubYear +
                 '}';
     }
 }

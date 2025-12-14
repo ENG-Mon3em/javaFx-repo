@@ -3,13 +3,19 @@ package com.example.javafxproject;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.sql.PreparedStatement;
+
 public class Main extends Application {
+    DBconnection conn = null;
+    PreparedStatement pst = null;
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) {
+
 
         AdminUsers adminUsers = new AdminUsers();
         AdminBooks adminBooks = new AdminBooks();
@@ -32,6 +38,7 @@ public class Main extends Application {
 
         adminUsers.back.setOnAction(e -> stage.setScene(home.getHomeScene()));
         adminUsers.users.setOnAction(e -> stage.setScene(adminBooks.getScene()));
+
 
         adminBooks.back.setOnAction(e -> stage.setScene(home.getHomeScene()));
         adminBooks.users.setOnAction(e -> stage.setScene(adminUsers.getScene()));
