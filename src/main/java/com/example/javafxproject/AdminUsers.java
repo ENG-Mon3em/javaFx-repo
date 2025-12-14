@@ -110,6 +110,16 @@ public class AdminUsers {
             tUserName.clear();
             tUserType.clear();
         });
+        update.setOnAction((event)->{
+            UsersData selected = (UsersData) table.getSelectionModel().getSelectedItem();
+            if(selected != null){
+                selected.setName(tUserName.getText());
+                selected.setId(Integer.parseInt(tUserID.getText()));
+                selected.setUserType(tUserType.getText());
+
+                table.refresh();
+            }
+        });
 
 
     }

@@ -124,6 +124,17 @@ public class AdminBooks {
             tPubYear.clear();
             tStorage.clear();
         });
+        update.setOnAction((event)->{
+        BooksData selected = (BooksData) table.getSelectionModel().getSelectedItem();
+        if(selected != null){
+            selected.setId(Integer.parseInt(tBookID.getText()));
+            selected.setBookName(tTitle.getText());
+            selected.setAuthorName(tAuthor.getText());
+            selected.setPubYear(Integer.parseInt(tPubYear.getText()));
+            selected.setStorage(Double.parseDouble(tStorage.getText()));
+            table.refresh();
+        }
+        });
     }
 
     void renderControls() {
