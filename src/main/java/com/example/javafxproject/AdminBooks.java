@@ -1,5 +1,7 @@
 package com.example.javafxproject;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -123,6 +125,17 @@ public class AdminBooks {
             tAuthor.clear();
             tPubYear.clear();
             tStorage.clear();
+        });
+
+        search.setOnAction(e -> {
+            String keyword = searchField.getText().toLowerCase();
+            ObservableList<BooksData> currentItems = FXCollections.observableArrayList(table.getItems());
+            table.getItems().clear();
+            for (BooksData b : currentItems) {
+                if (String.valueOf(b.getId()).contains(keyword)) {
+                    table.getItems().add(b);
+                }
+            }
         });
     }
 

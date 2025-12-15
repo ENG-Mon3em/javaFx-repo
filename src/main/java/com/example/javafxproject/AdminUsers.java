@@ -1,5 +1,7 @@
 package com.example.javafxproject;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -111,6 +113,19 @@ public class AdminUsers {
             tUserType.clear();
         });
 
+        search.setOnAction(e -> {
+            String keyword = searchField.getText().toLowerCase();
+            ObservableList<UsersData> currentItems = FXCollections.observableArrayList(table.getItems());
+            table.getItems().clear();
+            for (UsersData u : currentItems) {
+                if (String.valueOf(u.getId()).contains(keyword) || u.getName().toLowerCase().contains(keyword)) {
+                    table.getItems().add(u);
+                }
+            }
+            if (keyword.isEmpty()) {
+                table.getItems().setAll(currentItems);
+            }
+        });
 
     }
     void renderControls() {
