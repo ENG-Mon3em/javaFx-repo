@@ -28,7 +28,6 @@ public class AdminBooks {
     Button add;
     Button update;
     Button delete;
-    Button refresh;
     Button search;
     Button clear;
     Button back;
@@ -55,7 +54,7 @@ public class AdminBooks {
         bookTitleLabel = new Label("BookTitle:");
         authorLabel = new Label("Author:");
         pubYearLabel = new Label("PubYear:");
-        StorageLabel = new Label("Storage:");
+        StorageLabel = new Label("Storage(MB):");
 
         tBookID = new TextField();
         tTitle = new TextField();
@@ -68,7 +67,6 @@ public class AdminBooks {
         add = new Button("Add \n Book");
         update = new Button("Update \n Book");
         delete = new Button("Delete \n Book");
-        refresh = new Button("Refresh \n Fields");
         search = new Button("Search");
         clear = new Button("Clear \n Fields");
         back = new Button("Back");
@@ -99,7 +97,7 @@ public class AdminBooks {
         PubYear.setCellValueFactory(new PropertyValueFactory<>("PubYear"));
         PubYear.setPrefWidth(130);
 
-        TableColumn<BooksData, Double> Storage = new TableColumn<>("Storage(MB)");
+        TableColumn<BooksData, Double> Storage = new TableColumn<>("Storage");
         Storage.setCellValueFactory(new PropertyValueFactory<>("Storage"));
         Storage.setPrefWidth(100);
 
@@ -142,10 +140,7 @@ public class AdminBooks {
 
         row1 = new HBox(10, add, update, delete);
         row1.setAlignment(Pos.CENTER);
-        HBox hBoxRefreshAndDelete = new HBox(clear, refresh);
-        hBoxRefreshAndDelete.setAlignment(Pos.CENTER);
-        hBoxRefreshAndDelete.setSpacing(10);
-        row2 = new HBox(10, hBoxRefreshAndDelete);
+        row2 = new HBox(10, clear);
         row2.setAlignment(Pos.CENTER);
         row3 = new HBox(10, searchField, search);
         row3.setAlignment(Pos.CENTER);

@@ -15,20 +15,18 @@ import java.util.Objects;
 public class viewBooks {
 
     Label titleLabel;
-    TextField searchTextField;
     TextArea DetailsTextArea;
     TableView<BooksData> table;
     TableColumn<BooksData, Integer> id;
     TableColumn<BooksData, String> bookName;
     TableColumn<BooksData, String> authorName;
-    Button okButton;
     Button storeButton;
     Button backButton;
     VBox vBoxdetails;
     VBox vBoxButtons;
     VBox vBox;
     VBox firstPart;
-    HBox hBoxSearch, secondPart;
+    HBox secondPart;
     FlowPane flowPane;
     Scene viewBooksScene;
 
@@ -42,14 +40,10 @@ public class viewBooks {
         titleLabel = new Label("View");
         DetailsTextArea = new TextArea();
         DetailsTextArea.setPromptText("Book Details");
-        searchTextField = new TextField();
-        searchTextField.setPromptText("Enter Book Id");
-        searchTextField.setMaxWidth(200);
         storeButton = new Button("Store");
         storeButton.setId("DownloadButton");
         backButton = new Button("Back");
         backButton.setId("backButton");
-        okButton = new Button("ok");
     }
 
     void initTable() {
@@ -74,20 +68,13 @@ public class viewBooks {
         firstPart.setAlignment(Pos.CENTER);
         firstPart.setSpacing(20);
 
-        hBoxSearch = new HBox(searchTextField, okButton);
-        hBoxSearch.setSpacing(5);
-        hBoxSearch.setAlignment(Pos.CENTER);
-
-        vBoxdetails = new VBox(hBoxSearch, DetailsTextArea);
-        vBoxdetails.setAlignment(Pos.CENTER);
-        vBoxdetails.setSpacing(5);
-
         vBoxButtons = new VBox(storeButton, backButton);
         vBoxButtons.setAlignment(Pos.CENTER);
         vBoxButtons.setSpacing(20);
 
-        secondPart = new HBox(vBoxdetails, vBoxButtons);
+        secondPart = new HBox(DetailsTextArea, vBoxButtons);
         secondPart.setSpacing(10);
+        secondPart.setAlignment(Pos.CENTER);
 
         vBox = new VBox(firstPart, secondPart);
         vBox.setSpacing(20);

@@ -13,7 +13,6 @@ import java.util.Objects;
 public class Store {
 
     Label titleLabel;
-    TextField searchTextField;
     TextArea DetailsTextArea;
     TableView<BooksData> table;
     Button okButton;
@@ -57,9 +56,6 @@ public class Store {
         titleLabel = new Label("Store");
         DetailsTextArea = new TextArea();
         DetailsTextArea.setPromptText("Book Details");
-        searchTextField = new TextField();
-        searchTextField.setPromptText("Enter Book Id");
-        searchTextField.setMaxWidth(200);
         downloadButton = new Button("Download");
         backButton = new Button("Back");
         backButton.setId("backButton");
@@ -70,7 +66,7 @@ public class Store {
         firstPart = new VBox(titleLabel, table);
         firstPart.setAlignment(Pos.CENTER);
 
-        vBoxButtons = new VBox(searchTextField,downloadButton, backButton);
+        vBoxButtons = new VBox(downloadButton, backButton);
         vBoxButtons.setAlignment(Pos.CENTER);
         vBoxButtons.setSpacing(20);
 

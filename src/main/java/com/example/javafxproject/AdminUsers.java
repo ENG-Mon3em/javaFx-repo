@@ -26,7 +26,6 @@ public class AdminUsers {
     Button add;
     Button update;
     Button delete;
-    Button refresh;
     Button search;
     Button clear;
     Button back;
@@ -65,7 +64,6 @@ public class AdminUsers {
         add = new Button("Add \n User");
         update = new Button("Update \n Users");
         delete = new Button("Delete \n User");
-        refresh = new Button("Refresh \n Fields");
         search = new Button("Search");
         clear = new Button("Clear \n Fields");
         back = new Button("Back");
@@ -127,10 +125,7 @@ public class AdminUsers {
 
         row1 = new HBox(10, add, update, delete);
         row1.setAlignment(Pos.CENTER);
-        HBox hBoxRefreshAndDelete = new HBox(clear, refresh);
-        hBoxRefreshAndDelete.setAlignment(Pos.CENTER);
-        hBoxRefreshAndDelete.setSpacing(10);
-        row2 = new HBox(10, hBoxRefreshAndDelete);
+        row2 = new HBox(10, clear);
         row2.setAlignment(Pos.CENTER);
         row3 = new HBox(10, searchField, search);
         row3.setAlignment(Pos.CENTER);
