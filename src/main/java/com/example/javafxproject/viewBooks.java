@@ -58,7 +58,7 @@ public class viewBooks {
         authorName = new TableColumn<>("Author");
         authorName.setCellValueFactory(new PropertyValueFactory<>("Author"));
 
-        table.getColumns().addAll(id, bookName, authorName);
+        table.getColumns().addAll(bookName, authorName);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.setPrefWidth(800);
     }

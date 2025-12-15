@@ -34,7 +34,18 @@ public class Store {
 
     public Store() {
         initControls();
+        initActions();
         renderControls();
+    }
+
+    void initActions() {
+        downloadButton.setOnAction(event -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Download Alert");
+            alert.setHeaderText(null);
+            alert.setContentText("Downloading is Done");
+            alert.showAndWait();
+        });
     }
 
     void initControls() {
@@ -49,7 +60,7 @@ public class Store {
         edition.setCellValueFactory(new PropertyValueFactory("edition"));
         Storage = new TableColumn("Storage");
         Storage.setCellValueFactory(new PropertyValueFactory("Storage"));
-        table.getColumns().addAll(id, bookName, authorName, edition, Storage);
+        table.getColumns().addAll(bookName, authorName, Storage);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.setPrefWidth(800);
 
@@ -80,7 +91,7 @@ public class Store {
 
     public Scene getScene() {
         if (storeScene == null) {
-            storeScene = new Scene(flowPane,1500,800);
+            storeScene = new Scene(flowPane, 1500, 800);
             storeScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         }
         return storeScene;

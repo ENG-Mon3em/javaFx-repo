@@ -1,5 +1,7 @@
 package com.example.javafxproject;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -24,19 +26,16 @@ public class AdminBooks {
     TextField tAuthor;
     TextField tPubYear;
     TextField tStorage;
-    TextField searchField;
     Button add;
     Button update;
     Button delete;
-    Button search;
     Button clear;
     Button back;
     Button users;
     GridPane grid;
     HBox row1;
     HBox row2;
-    HBox row3;
-    TableView<BooksData> table;
+        TableView<BooksData> table;
     VBox vbox;
     HBox rootHBox;
     Scene adminScene;
@@ -61,13 +60,10 @@ public class AdminBooks {
         tAuthor = new TextField();
         tPubYear = new TextField();
         tStorage = new TextField();
-        searchField = new TextField();
-        searchField.setPromptText("Search by BookID");
 
         add = new Button("Add \n Book");
         update = new Button("Update \n Book");
         delete = new Button("Delete \n Book");
-        search = new Button("Search");
         clear = new Button("Clear \n Fields");
         back = new Button("Back");
         back.setId("backButton");
@@ -122,6 +118,23 @@ public class AdminBooks {
             tPubYear.clear();
             tStorage.clear();
         });
+        delete.setOnAction(e -> {
+            BooksData selectedBook = table.getSelectionModel().getSelectedItem();
+            if (selectedBook != null) {
+                table.getItems().remove(selectedBook);
+            }
+        });
+        update.setOnAction((event)->{
+            BooksData selected = (BooksData) table.getSelectionModel().getSelectedItem();
+            if(selected != null){
+                selected.setId(Integer.parseInt(tBookID.getText()));
+                selected.setBookName(tTitle.getText());
+                selected.setAuthorName(tAuthor.getText());
+                selected.setPubYear(Integer.parseInt(tPubYear.getText()));
+                selected.setStorage(Double.parseDouble(tStorage.getText()));
+                table.refresh();
+            }
+        });
     }
 
     void renderControls() {
@@ -142,12 +155,9 @@ public class AdminBooks {
         row1.setAlignment(Pos.CENTER);
         row2 = new HBox(10, clear);
         row2.setAlignment(Pos.CENTER);
-        row3 = new HBox(10, searchField, search);
-        row3.setAlignment(Pos.CENTER);
 
         grid.add(row1, 0, 6);
         grid.add(row2, 1, 6);
-        grid.add(row3, 0, 8);
 
         HBox hBoxUsersAndBack = new HBox(back, users);
         hBoxUsersAndBack.setAlignment(Pos.CENTER);

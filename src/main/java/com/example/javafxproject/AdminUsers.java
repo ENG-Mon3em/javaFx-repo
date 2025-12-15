@@ -22,18 +22,15 @@ public class AdminUsers {
     TextField tUserName;
     TextField tUserType;
 
-    TextField searchField;
     Button add;
     Button update;
     Button delete;
-    Button search;
     Button clear;
     Button back;
     Button users;
     GridPane grid;
     HBox row1;
     HBox row2;
-    HBox row3;
 
     TableView<UsersData> table;
 
@@ -58,13 +55,9 @@ public class AdminUsers {
         tUserName = new TextField();
         tUserType = new TextField();
 
-        searchField = new TextField();
-        searchField.setPromptText("Search by User ID");
-
         add = new Button("Add \n User");
         update = new Button("Update \n Users");
         delete = new Button("Delete \n User");
-        search = new Button("Search");
         clear = new Button("Clear \n Fields");
         back = new Button("Back");
         back.setId("backButton");
@@ -94,7 +87,6 @@ public class AdminUsers {
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.setPrefWidth(900);
     }
-
     void initActions(){
 
         add.setOnAction(e -> {
@@ -108,8 +100,22 @@ public class AdminUsers {
             tUserName.clear();
             tUserType.clear();
         });
+        update.setOnAction((event)->{
+            UsersData selected = (UsersData) table.getSelectionModel().getSelectedItem();
+            if(selected != null){
+                selected.setName(tUserName.getText());
+                selected.setId(Integer.parseInt(tUserID.getText()));
+                selected.setUserType(tUserType.getText());
 
-
+                table.refresh();
+            }
+        });
+        delete.setOnAction(e -> {
+            UsersData selectedUser = table.getSelectionModel().getSelectedItem();
+            if (selectedUser != null) {
+                table.getItems().remove(selectedUser);
+            }
+        });
     }
     void renderControls() {
         grid.add(titleLabel, 0, 0, 2, 1);
@@ -127,12 +133,9 @@ public class AdminUsers {
         row1.setAlignment(Pos.CENTER);
         row2 = new HBox(10, clear);
         row2.setAlignment(Pos.CENTER);
-        row3 = new HBox(10, searchField, search);
-        row3.setAlignment(Pos.CENTER);
 
         grid.add(row1, 0, 4);
         grid.add(row2, 1, 4);
-        grid.add(row3, 0, 6);
 
         HBox hBoxUsersAndBack = new HBox(back, users);
         hBoxUsersAndBack.setAlignment(Pos.CENTER);
