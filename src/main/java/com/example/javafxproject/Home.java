@@ -5,9 +5,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -24,9 +21,6 @@ public class Home {
     Button shopButton;
     Button infoButton;
     Button logOutButton;
-//    TableView<BooksData> table;
-//    TableColumn<BooksData, String> name;
-//    TableColumn<BooksData, String> authorName;
     String imagePath;
     Image libraryImage;
     ImageView imageView;
@@ -39,25 +33,12 @@ public class Home {
     }
 
     void initControls() {
-
         welcomeLabel = new Label("Welcome to The Library System");
         editUserButton = new Button("Edit User");
         editBookButton = new Button("Edit Book");
         shopButton = new Button("Shop");
         infoButton = new Button("Info");
         logOutButton = new Button("LogOut");
-
-//        table = new TableView<>();
-//        name = new TableColumn<>("Name");
-//        authorName = new TableColumn<>("authorName");
-//
-//
-//        name.setCellValueFactory(new PropertyValueFactory<>("Name"));
-//        authorName.setCellValueFactory(new PropertyValueFactory<>("authorName"));
-//        table.getColumns().addAll(name, authorName);
-//        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-//        table.setMaxWidth(500);
-//        table.setMaxHeight(300);
 
         imagePath = new File("C:\\Repos\\javaFx-repo\\src\\main\\resources\\Images\\library.png").toURI().toString();
         libraryImage = new Image(imagePath);
@@ -68,10 +49,10 @@ public class Home {
     }
 
     void renderControls() {
-        HBox hBoxBooksButtons = new HBox(infoButton, shopButton, editUserButton, editBookButton,logOutButton);
+        HBox hBoxBooksButtons = new HBox(infoButton, shopButton, editUserButton, editBookButton, logOutButton);
         hBoxBooksButtons.setAlignment(Pos.CENTER);
         hBoxBooksButtons.setSpacing(20);
-        mainVBox = new VBox(imageView, welcomeLabel, hBoxBooksButtons /*,table*/);
+        mainVBox = new VBox(imageView, welcomeLabel, hBoxBooksButtons);
         mainVBox.setAlignment(Pos.CENTER);
         mainVBox.setSpacing(20);
         mainVBox.setPadding(new Insets(20));
@@ -79,7 +60,7 @@ public class Home {
 
     public Scene getHomeScene() {
         if (homeScene == null) {
-            homeScene = new Scene(mainVBox,1500,800);
+            homeScene = new Scene(mainVBox, 1500, 800);
             homeScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         }
         return homeScene;

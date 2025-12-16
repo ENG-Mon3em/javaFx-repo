@@ -2,14 +2,14 @@ package com.example.javafxproject;
 
 public class UsersData {
 
-    public int id ;
+    public int id;
     public String name;
-    public String userType;
+    public String Password;
 
-    public UsersData(int id, String name, String userType) {
+    public UsersData(int id, String name, String Password) {
         this.id = id;
         this.name = name;
-        this.userType = userType;
+        this.Password = Password;
     }
 
     public int getId() {
@@ -28,20 +28,16 @@ public class UsersData {
         this.name = name;
     }
 
-    public String getUserType() {
-        return userType;
+    public String getPassword() {
+        return Password;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setPassword(String Password) {
+        this.Password = Password;
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", userType='" + userType + '\'' +
-                '}';
+        return "User{" + "id=" + id + ", name='" + name + '\'' + ", Password='" + Password + '\'' + '}';
     }
 }

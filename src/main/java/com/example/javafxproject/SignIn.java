@@ -16,7 +16,7 @@ import java.util.Objects;
 
 public class SignIn {
 
-    Label emailLabel;
+    Label NameLabel;
     Label passwordLabel;
     Label spacerLabel;
     TextField emailTextField;
@@ -36,22 +36,28 @@ public class SignIn {
     }
 
     void initControls() {
-        emailLabel = new Label("Email");
+        NameLabel = new Label("Name");
         emailTextField = new TextField();
         spacerLabel = new Label();
         passwordLabel = new Label("Password");
         passwordField = new PasswordField();
+
         signInButton = new Button("Sign In");
         signInButton.setPrefWidth(200);
+
         signUpButton = new Button("Sign Up");
         signUpButton.setPrefWidth(200);
+
         buttonVBox = new VBox(10, signInButton, signUpButton);
         buttonVBox.setAlignment(Pos.CENTER);
+
         rootGridPane = new GridPane();
         rootGridPane.setAlignment(Pos.CENTER);
         rootGridPane.setHgap(10);
         rootGridPane.setVgap(10);
+
         imagePath = new File("C:\\Repos\\javaFx-repo\\src\\main\\resources\\Images\\library.png").toURI().toString();
+
         libraryImage = new Image(imagePath);
         imageView = new ImageView(libraryImage);
         imageView.setFitHeight(200);
@@ -61,7 +67,7 @@ public class SignIn {
 
     void renderControls() {
         rootGridPane.add(imageView, 0, 0, 2, 1);
-        rootGridPane.add(emailLabel, 0, 2);
+        rootGridPane.add(NameLabel, 0, 2);
         rootGridPane.add(passwordLabel, 0, 3);
         rootGridPane.add(emailTextField, 1, 2);
         rootGridPane.add(passwordField, 1, 3);
@@ -71,7 +77,7 @@ public class SignIn {
 
     public Scene getScene() {
         if (signInScene == null) {
-            signInScene = new Scene(rootGridPane,1500,800);
+            signInScene = new Scene(rootGridPane, 1500, 800);
             signInScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         }
         return signInScene;

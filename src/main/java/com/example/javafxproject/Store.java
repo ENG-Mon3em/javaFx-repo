@@ -1,5 +1,7 @@
 package com.example.javafxproject;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -8,34 +10,44 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class Store {
 
-    Label titleLabel;
-    TextArea DetailsTextArea;
-    TableView<BooksData> table;
-    Button okButton;
-    Button downloadButton;
-    Button backButton;
-    VBox vBoxdetails;
-    VBox vBoxButtons;
-    VBox vBox;
-    VBox firstPart;
-    HBox hBoxSearch;
-    HBox secondPart;
-    FlowPane flowPane;
-    Scene storeScene;
-    TableColumn<BooksData, Integer> id;
-    TableColumn<BooksData, String> bookName;
-    TableColumn<BooksData, String> authorName;
-    TableColumn<BooksData, String> edition;
-    TableColumn<BooksData, String> Storage;
+    public Label titleLabel;
+    public TextArea DetailsTextArea;
+    public TableView<BooksData> table;
+    public Button okButton;
+    public Button downloadButton;
+    public Button backButton;
+    public VBox vBoxdetails;
+    public VBox vBoxButtons;
+    public VBox vBox;
+    public VBox firstPart;
+    public HBox hBoxSearch;
+    public HBox secondPart;
+    public FlowPane flowPane;
+    public Scene storeScene;
+    public TableColumn<BooksData, Integer> id;
+    public TableColumn<BooksData, String> bookName;
+    public TableColumn<BooksData, String> authorName;
+    public TableColumn<BooksData, Integer> pubYear;
+    public TableColumn<BooksData, Double> Storage;
+    Connection conn = null;
+    PreparedStatement pst = null;
+    ResultSet res = null;
+    ObservableList<BooksData> data;
 
     public Store() {
         initControls();
+        initTable();
         initActions();
         renderControls();
+        showBooks();
     }
 
     void initActions() {
@@ -43,39 +55,92 @@ public class Store {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Download Alert");
             alert.setHeaderText(null);
-            alert.setContentText("Downloading is Done");
+
+            BooksData selectedBook = table.getSelectionModel().getSelectedItem();
+            if (selectedBook != null) {
+                alert.setContentText("Downloading: " + selectedBook.getBookName());
+            } else {
+                alert.setContentText("Please select a book to download!");
+            }
+
             alert.showAndWait();
         });
     }
 
     void initControls() {
         table = new TableView<>();
-        id = new TableColumn("id");
-        id.setCellValueFactory(new PropertyValueFactory("id"));
-        bookName = new TableColumn("BookName");
-        bookName.setCellValueFactory(new PropertyValueFactory("name"));
-        authorName = new TableColumn("Author");
-        authorName.setCellValueFactory(new PropertyValueFactory("Author"));
-        edition = new TableColumn("edition");
-        edition.setCellValueFactory(new PropertyValueFactory("edition"));
-        Storage = new TableColumn("Storage");
-        Storage.setCellValueFactory(new PropertyValueFactory("Storage"));
-        table.getColumns().addAll(bookName, authorName, Storage);
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        table.setPrefWidth(800);
 
         titleLabel = new Label("Store");
+
         DetailsTextArea = new TextArea();
         DetailsTextArea.setPromptText("Book Details");
+
         downloadButton = new Button("Download");
+
         backButton = new Button("Back");
         backButton.setId("backButton");
+
         okButton = new Button("ok");
+    }
+
+    void initTable() {
+        id = new TableColumn<>("ID");
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        id.setPrefWidth(50);
+
+        bookName = new TableColumn<>("Book Name");
+        bookName.setCellValueFactory(new PropertyValueFactory<>("bookName"));
+        bookName.setPrefWidth(200);
+
+        authorName = new TableColumn<>("Author");
+        authorName.setCellValueFactory(new PropertyValueFactory<>("authorName"));
+        authorName.setPrefWidth(200);
+
+        pubYear = new TableColumn<>("Pub Year");
+        pubYear.setCellValueFactory(new PropertyValueFactory<>("pubYear"));
+        pubYear.setPrefWidth(100);
+
+        Storage = new TableColumn<>("Storage");
+        Storage.setCellValueFactory(new PropertyValueFactory<>("Storage"));
+        Storage.setPrefWidth(100);
+
+        table.getColumns().addAll(id, bookName, authorName, pubYear, Storage);
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        table.setPrefWidth(800);
+    }
+
+    public void showBooks() {
+        data = FXCollections.observableArrayList();
+        conn = DBconn.DBConnection();
+        String sql = "SELECT ID, NAME, AUTHOR, PUBYEAR, STORAGE FROM BOOKS";
+
+        try {
+            pst = conn.prepareStatement(sql);
+            res = pst.executeQuery();
+
+            while (res.next()) {
+                data.add(new BooksData(
+                        res.getInt("ID"),
+                        res.getString("NAME"),
+                        res.getString("AUTHOR"),
+                        res.getDouble("STORAGE"),
+                        res.getInt("PUBYEAR")
+                ));
+            }
+
+            table.setItems(data);
+            pst.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error fetching books in Store: " + ex.toString());
+        }
     }
 
     void renderControls() {
         firstPart = new VBox(titleLabel, table);
         firstPart.setAlignment(Pos.CENTER);
+        firstPart.setSpacing(20);
 
         vBoxButtons = new VBox(downloadButton, backButton);
         vBoxButtons.setAlignment(Pos.CENTER);
@@ -92,7 +157,11 @@ public class Store {
     public Scene getScene() {
         if (storeScene == null) {
             storeScene = new Scene(flowPane, 1500, 800);
-            storeScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+            storeScene.getStylesheets().add(
+                    Objects.requireNonNull(
+                            getClass().getResource("/style.css")
+                    ).toExternalForm()
+            );
         }
         return storeScene;
     }

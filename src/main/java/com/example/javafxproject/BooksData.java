@@ -61,12 +61,6 @@ public class BooksData {
 
     @Override
     public String toString() {
-        return "BooksData{" +
-                "id=" + id +
-                ", bookName='" + bookName + '\'' +
-                ", authorName='" + authorName + '\'' +
-                ", Storage=" + Storage +
-                ", PubYear=" + PubYear +
-                '}';
+        return "Book Details:\n" + "-------------------------------------\n" + "ID: " + id + "\n" + "Title: " + bookName + "\n" + "Author: " + authorName + "\n" + "Publication Year: " + PubYear + "\n" + "Storage(MB): " + Storage + "\n";
     }
 }
