@@ -40,7 +40,7 @@ public class Home {
         infoButton = new Button("Info");
         logOutButton = new Button("LogOut");
 
-        imagePath = new File("C:\\Repos\\javaFx-repo\\src\\main\\resources\\Images\\library.png").toURI().toString();
+        imagePath = new File("src/main/resources/Images/library.png").toURI().toString();
         libraryImage = new Image(imagePath);
         imageView = new ImageView(libraryImage);
         imageView.setFitHeight(200);

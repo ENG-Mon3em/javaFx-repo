@@ -56,7 +56,7 @@ public class SignIn {
         rootGridPane.setHgap(10);
         rootGridPane.setVgap(10);
 
-        imagePath = new File("C:\\Repos\\javaFx-repo\\src\\main\\resources\\Images\\library.png").toURI().toString();
+        imagePath = new File("src/main/resources/Images/library.png").toURI().toString();
 
         libraryImage = new Image(imagePath);
         imageView = new ImageView(libraryImage);
