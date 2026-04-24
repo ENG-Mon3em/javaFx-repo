@@ -1,39 +1,25 @@
 package com.example.javafxproject;
 
-public class BooksData {
+public class BooksData extends LibraryEntity {
 
-    public int id;
-    public String bookName;
-    public String authorName;
-    public double Storage;
-    public int PubYear;
 
-    public BooksData() {
+    private String authorName;
+    private double storage;
+    private int pubYear;
+
+    public BooksData(int id, String bookName) {
+        super(id, bookName);
     }
 
+    // Overloading
     public BooksData(int id, String bookName, String authorName, double storage, int pubYear) {
-        this.id = id;
-        this.bookName = bookName;
+
+        super(id, bookName);
         this.authorName = authorName;
-        Storage = storage;
-        PubYear = pubYear;
+        this.storage = storage;
+        this.pubYear = pubYear;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getBookName() {
-        return bookName;
-    }
-
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
-    }
 
     public String getAuthorName() {
         return authorName;
@@ -44,23 +30,22 @@ public class BooksData {
     }
 
     public double getStorage() {
-        return Storage;
+        return storage;
     }
 
     public void setStorage(double storage) {
-        Storage = storage;
+        this.storage = storage;
     }
 
     public int getPubYear() {
-        return PubYear;
+        return pubYear;
     }
 
     public void setPubYear(int pubYear) {
-        PubYear = pubYear;
+        this.pubYear = pubYear;
     }
 
-    @Override
     public String toString() {
-        return "Book Details:\n" + "-------------------------------------\n" + "ID: " + id + "\n" + "Title: " + bookName + "\n" + "Author: " + authorName + "\n" + "Publication Year: " + PubYear + "\n" + "Storage(MB): " + Storage + "\n";
+        return "Book Details:\n" + "-------------------------------------\n" + "ID: " + getId() + "\n" + "Title: " + getName() + "\n" + "Author: " + authorName + "\n" + "Publication Year: " + pubYear + "\n" + "Storage: " + storage + " MB\n";
     }
 }

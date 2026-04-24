@@ -35,7 +35,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-
+        // don't forget the validate()
         adminUsers = new AdminUsers();
         adminBooks = new AdminBooks();
         home = new Home();
@@ -137,7 +137,7 @@ public class Main extends Application {
                 BooksData selectedBook = adminBooks.table.getSelectionModel().getSelectedItem();
                 if (selectedBook != null) {
                     adminBooks.tBookID.setText(String.valueOf(selectedBook.getId()));
-                    adminBooks.tTitle.setText(selectedBook.getBookName());
+                    adminBooks.tTitle.setText(selectedBook.getName());
                     adminBooks.tAuthor.setText(selectedBook.getAuthorName());
                     adminBooks.tPubYear.setText(String.valueOf(selectedBook.getPubYear()));
                     adminBooks.tStorage.setText(String.valueOf(selectedBook.getStorage()));

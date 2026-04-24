@@ -17,7 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
 
-public class AdminBooks {
+public class AdminBooks implements Fetchable {
 
     public Label titleLabel;
     public Label bookIdLabel;
@@ -53,7 +53,8 @@ public class AdminBooks {
         initTable();
         initActions();
         renderControls();
-        fetchBooksData();
+        fetch();
+        this.conn = DBconn.DBConnection(); // Composition
     }
 
     void initControls() {
@@ -108,7 +109,7 @@ public class AdminBooks {
         table.setPrefWidth(900);
     }
 
-    void fetchBooksData() {
+    public void fetch() {
         data.clear();
         conn = DBconn.DBConnection();
         String sql = "SELECT ID, NAME, AUTHOR, PUBYEAR, STORAGE FROM BOOKS";
@@ -132,7 +133,7 @@ public class AdminBooks {
         table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 tBookID.setText(String.valueOf(newSelection.getId()));
-                tTitle.setText(newSelection.getBookName());
+                tTitle.setText(newSelection.getName());
                 tAuthor.setText(newSelection.getAuthorName());
                 tPubYear.setText(String.valueOf(newSelection.getPubYear()));
                 tStorage.setText(String.valueOf(newSelection.getStorage()));
