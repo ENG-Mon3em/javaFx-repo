@@ -17,7 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
 
-public class AdminUsers {
+public class AdminUsers implements Fetchable {
 
     public Label titleLabel;
     public Label userIdLabel;
@@ -45,11 +45,12 @@ public class AdminUsers {
     ObservableList<UsersData> data;
 
     public AdminUsers() {
+        // Composition
         initControls();
         initTable();
         initActions();
         renderControls();
-        fetchUsersData();
+        fetch();
     }
 
     void initControls() {
@@ -96,7 +97,7 @@ public class AdminUsers {
         table.setPrefWidth(900);
     }
 
-    void fetchUsersData() {
+    public void fetch() {
         data.clear();
         conn = DBconn.DBConnection();
         String sql = "SELECT ID, NAME, PASSWORD FROM USERS";

@@ -12,7 +12,7 @@ public class DBconn {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "LibrarySystem", "9718395");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "DATABASE_0 ", "9718395");
 
         } catch (Exception ex) {
             System.out.println(ex.toString());

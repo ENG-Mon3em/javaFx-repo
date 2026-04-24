@@ -104,13 +104,7 @@ public class viewBooks {
             res = pst.executeQuery();
 
             while (res.next()) {
-                data.add(new BooksData(
-                        res.getInt("ID"),
-                        res.getString("NAME"),
-                        res.getString("AUTHOR"),
-                        res.getDouble("STORAGE"),
-                        res.getInt("PUBYEAR")
-                ));
+                data.add(new BooksData(res.getInt("ID"), res.getString("NAME"), res.getString("AUTHOR"), res.getDouble("STORAGE"), res.getInt("PUBYEAR")));
             }
 
             table.setItems(data);
@@ -123,15 +117,13 @@ public class viewBooks {
     }
 
     void initActions() {
-        table.getSelectionModel().selectedItemProperty().addListener(
-                (obs, oldSelection, newSelection) -> {
-                    if (newSelection != null) {
-                        DetailsTextArea.setText(newSelection.toString());
-                    } else {
-                        DetailsTextArea.setText("Book Details will appear here upon selection...");
-                    }
-                }
-        );
+        table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                DetailsTextArea.setText(newSelection.toString());
+            } else {
+                DetailsTextArea.setText("Book Details will appear here upon selection...");
+            }
+        });
     }
 
     void renderControls() {
@@ -159,11 +151,7 @@ public class viewBooks {
     public Scene getScene() {
         if (viewBooksScene == null) {
             viewBooksScene = new Scene(flowPane, 1500, 800);
-            viewBooksScene.getStylesheets().add(
-                    Objects.requireNonNull(
-                            getClass().getResource("/style.css")
-                    ).toExternalForm()
-            );
+            viewBooksScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         }
         return viewBooksScene;
     }

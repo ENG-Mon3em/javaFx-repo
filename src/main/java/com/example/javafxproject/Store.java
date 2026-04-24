@@ -40,7 +40,7 @@ public class Store {
     Connection conn = null;
     PreparedStatement pst = null;
     ResultSet res = null;
-    ObservableList<BooksData> data;
+    ObservableList<BooksData> data; // Aggregation
 
     public Store() {
         initControls();
@@ -58,7 +58,7 @@ public class Store {
 
             BooksData selectedBook = table.getSelectionModel().getSelectedItem();
             if (selectedBook != null) {
-                alert.setContentText("Downloading: " + selectedBook.getBookName());
+                alert.setContentText("Downloading: " + selectedBook.getName());
             } else {
                 alert.setContentText("Please select a book to download!");
             }
@@ -119,13 +119,7 @@ public class Store {
             res = pst.executeQuery();
 
             while (res.next()) {
-                data.add(new BooksData(
-                        res.getInt("ID"),
-                        res.getString("NAME"),
-                        res.getString("AUTHOR"),
-                        res.getDouble("STORAGE"),
-                        res.getInt("PUBYEAR")
-                ));
+                data.add(new BooksData(res.getInt("ID"), res.getString("NAME"), res.getString("AUTHOR"), res.getDouble("STORAGE"), res.getInt("PUBYEAR")));
             }
 
             table.setItems(data);
@@ -157,11 +151,7 @@ public class Store {
     public Scene getScene() {
         if (storeScene == null) {
             storeScene = new Scene(flowPane, 1500, 800);
-            storeScene.getStylesheets().add(
-                    Objects.requireNonNull(
-                            getClass().getResource("/style.css")
-                    ).toExternalForm()
-            );
+            storeScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         }
         return storeScene;
     }

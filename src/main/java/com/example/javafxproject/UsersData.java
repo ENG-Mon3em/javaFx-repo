@@ -1,43 +1,32 @@
 package com.example.javafxproject;
 
-public class UsersData {
 
-    public int id;
-    public String name;
-    public String Password;
+public class UsersData extends LibraryEntity {
 
-    public UsersData(int id, String name, String Password) {
-        this.id = id;
-        this.name = name;
-        this.Password = Password;
+    private String password;
+
+    public UsersData(int id, String name, String password) {
+
+        super(id, name);
+        this.password = password;
     }
 
-    public int getId() {
-        return id;
+    // Association
+    public void borrowBook(BooksData book) {
+        System.out.println(this.getName() + " has borrowed: " + book.getName());
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
-    public void setPassword(String Password) {
-        this.Password = Password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", name='" + name + '\'' + ", Password='" + Password + '\'' + '}';
+        return "User{" + "id=" + getId() + ", name='" + getName() + '\'' + ", Password='" + password + '\'' + '}';
     }
 }
